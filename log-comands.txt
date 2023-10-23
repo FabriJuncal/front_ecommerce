@@ -1,3 +1,13 @@
 ng generate module app-routing --flat --module=app
 
-ng generate c modules/home
+ng generate module modules/home --routing
+ng generate component modules/home
+
+ng generate module shared
+ng generate component shared/header
+ng generate component shared/footer
+
+ng generate module modules/auth-profile --routing
+ng generate component modules/auth-profile
+ng generate component modules/auth-profile/login
+ng generate component modules/auth-profile/register
