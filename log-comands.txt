@@ -1,0 +1,3 @@
+ng generate module app-routing --flat --module=app
+
+ng generate c modules/home
