@@ -1173,7 +1173,7 @@ h2.section_title_3 {
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
-    
+
 }
 
 .default_btn:hover,
@@ -1181,10 +1181,18 @@ h2.section_title_3 {
     background-color: transparent;
     color: #FD3D57;
 }
+
 .default_btn.second:hover {
-    background: #FD3D57;
-    color: #fff;
+  background: #FD3D57;
+  color: #fff;
 }
+
+.default_btn:hover > .spinner.spinner-primary:before {
+  border: 2px solid #FD3D57;
+  border-right: 2px solid transparent;
+}
+
+
 .default_btn.xs_btn {
     min-width: 80px;
     padding: 6px 15px;

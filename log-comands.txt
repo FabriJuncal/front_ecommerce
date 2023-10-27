@@ -11,3 +11,7 @@ ng generate module modules/auth-profile --routing
 ng generate component modules/auth-profile
 ng generate component modules/auth-profile/login
 ng generate component modules/auth-profile/register
+
+ng generate service modules/auth-profile/_services/auth
+ng generate guard modules/auth-profile/_services/auth
+ng generate service modules/auth-profile/_services/auth/auth-http

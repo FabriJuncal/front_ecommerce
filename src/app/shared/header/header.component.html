@@ -46,8 +46,8 @@
                           <h5 class="text_lg ps-3 mb-2">Account pages</h5>
                           <ul>
                               <li><a href="account.html">My Account</a></li>
-                              <li><a href="login.html">Login</a></li>
-                              <li><a href="register.html">Register</a></li>
+                              <li><a routerLink="auth/login">Login</a></li>
+                              <li><a routerLink="auth/register">Register</a></li>
                               <li><a href="forgot-password.html">Forgot password</a></li>
                           </ul>
                       </div>
@@ -65,8 +65,8 @@
               <li><a href="contact-us.html">contact</a></li>
               <li class="tophead_items ms-auto">
                   <div class="me-3">
-                      <a class="text-semibold me-0" href="login.html">login</a><span class="text_xs">/</span><a
-                          class="text-semibold" href="register.html">Register</a>
+                      <a class="text-semibold me-0" routerLink="auth/login">login</a><span class="text_xs">/</span><a
+                          class="text-semibold" routerLink="auth/register">Register</a>
                   </div>
                   <div>
                       <select class="nice_select">
@@ -505,10 +505,11 @@
                   </a>
                   <div class="myacc_cont">
                       <div class="ac_join">
-                          <p>Welcome to RAFCART Shop</p>
+                          <p *ngIf="user">Welcome {{ user.name }} to RAFCART Shop</p>
+                          <p *ngIf="!user">Welcome to RAFCART Shop</p>
                           <div class="account_btn d-flex justify-content-between">
-                             <a href="register.html" class="default_btn">Join</a>
-                              <a href="login.html" class="default_btn second">Sing in</a>
+                             <a routerLink="auth/register" class="default_btn">Join</a>
+                              <a routerLink="auth/login" class="default_btn second">Sing in</a>
                           </div>
                       </div>
                       <div class="ac_links">
@@ -528,7 +529,7 @@
                                <i class="icon-cart"></i>
                               My Cart
                           </a>
-                          <a href="login.html">
+                          <a *ngIf="user" href="#" onclick="return false;" (click)="logout()">
                               <i class="las la-power-off"></i>
                               Log out
                           </a>
@@ -612,8 +613,8 @@
               </a>
               <div class="submn">
                   <a href="account.html">My account</a>
-                  <a href="login.html">Login</a>
-                  <a href="register.html">Register</a>
+                  <a routerLink="auth/login">Login</a>
+                  <a routerLink="auth/register">Register</a>
                   <a href="forgot-password.html">Forgot password</a>
               </div>
           </li>

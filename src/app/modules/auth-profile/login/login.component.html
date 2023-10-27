@@ -2,7 +2,7 @@
   <div class="container">
     <div class="breadcrumbs">
         <a href="#"><i class="las la-home"></i></a>
-        <a href="#" class="active">Login</a>
+        <a href="#" class="active">Iniciar Sesión</a>
     </div>
 </div>
 
@@ -12,32 +12,51 @@
         <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-7 col-md-9">
                 <div class="register_form padding_default shadow_sm">
-                    <h4 class="title_2">Login</h4>
-                    <p class="mb-4 text_md">Login if you a a returing customer</p>
-                    <form action="">
+                    <h4 class="title_2">Inicio de sesión</h4>
+                    <p class="mb-4 text_md">Inicie sesión si ya tiene una cuenta</p>
+                    <form
+                    [formGroup]="loginForm"
+                    (ngSubmit)="submit()"
+                    novalidate="novalidate">
+
+                        <!-- begin::Alert error-->
+                        <ng-container *ngIf="hasError">
+                          <div class="mb-10 alert alert-danger" role="alert">
+                            {{ messageError }}
+                          </div>
+                        </ng-container>
+                        <!-- end::Alert error-->
                         <div class="row">
                             <div class="col-12">
                                 <div class="single_billing_inp">
-                                    <label>Email Address <span>*</span></label>
-                                    <input type="email" placeholder="example@mail.com">
+                                    <label>correo electrónico:<span>*</span></label>
+                                    <input type="email" name="email" placeholder="example@mail.com" formControlName="email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single_billing_inp">
-                                    <label>Password <span>*</span></label>
-                                    <input type="password" placeholder="type password">
+                                    <label>Contraseña:<span>*</span></label>
+                                    <input type="password" name="password" placeholder="Escriba su contraseña..." formControlName="password">
                                 </div>
                             </div>
                             <div class="col-12 mt-2 d-flex justify-content-between align-items-center">
                                 <div class="custom_check check_2 d-flex align-items-center">
                                     <input type="checkbox" class="check_inp" hidden id="save-default">
-                                    <label for="save-default">Remember Me</label>
+                                    <label for="save-default">Recuérdame</label>
                                 </div>
 
-                                <a href="forgot-password.html" class="text-color">Forgot Password?</a>
+                                <a href="forgot-password.html" class="text-color">¿Has olvidado tu contraseña?</a>
                             </div>
                             <div class="col-12 mt-3">
-                                <button type="submit" class="default_btn xs_btn rounded px-4 d-block w-100">Login</button>
+                                <button
+                                type="submit"
+                                [disabled]="loginForm.invalid"
+                                class="btn default_btn xs_btn rounded px-4 d-block w-100">
+                                  Iniciar Sesión
+                                  <ng-container *ngIf="isLoading$ | async">
+                                    <span class="spinner spinner-primary ml-5"></span>
+                                  </ng-container>
+                                </button>
                             </div>
 
                         </div>
@@ -56,7 +75,7 @@
                         </button>
                     </div>
 
-                    <p class="text-center mt-3 mb-0">Don't have an account.? <a href="register.html" class="text-color">Register Now</a></p>
+                    <p class="text-center mt-3 mb-0">¿No tienes una cuenta? <a href="register.html" class="text-color">Crear Cuenta</a></p>
 
                 </div>
             </div>
