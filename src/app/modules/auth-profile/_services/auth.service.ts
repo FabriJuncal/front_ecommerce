@@ -55,7 +55,7 @@ export class AuthService implements OnDestroy {
   }
   // public methods
   isLogued() {
-    return ( this.token.length > 5 ) ? true : false;
+    return ( this.token) ? true : false;
   }
   login(email: string, password: string) {
       this.isLoadingSubject.next(true);
