@@ -22,6 +22,7 @@ export class AuthService implements OnDestroy {
   isLoadingSubject: BehaviorSubject<boolean>;
   user: any;
   token: string;
+  type_user = 1;
 
   get currentUserValue(): UserModel {
     return this.currentUserSubject.value;
@@ -59,7 +60,7 @@ export class AuthService implements OnDestroy {
   }
   login(email: string, password: string) {
       this.isLoadingSubject.next(true);
-      return this.authHttpService.login(email, password).pipe(
+      return this.authHttpService.login(email, password, this.type_user).pipe(
         map((auth: any) => {
           console.log('auth.access_token->',auth.access_token)
             if(auth.access_token){
@@ -110,6 +111,7 @@ export class AuthService implements OnDestroy {
   // need create new user then login
   registration(user: UserModel): Observable<any> {
     this.isLoadingSubject.next(true);
+    user.type_user = this.type_user;
     return this.authHttpService.createUser(user).pipe(
       map(() => {
         this.isLoadingSubject.next(false);
